@@ -1,0 +1,10 @@
+{
+  "total_examples": 1794,
+  "examples_by_sphere": {
+    "047_investigator": 598,
+    "048_prosecutor": 598,
+    "049_judge": 598
+  },
+  "tomes_processed": 60,
+  "avg_examples_per_tome": 29.9
+}
