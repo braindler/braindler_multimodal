@@ -1,0 +1,86 @@
+🌙 Начало: 19:35
+⏰ ~8 часов до завершения
+
+🔍 Сфера 047...
+`torch_dtype` is deprecated! Use `dtype` instead!
+/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/bitsandbytes/cextension.py:34: UserWarning: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+  warn("The installed version of bitsandbytes was compiled without GPU support. "
+================================================================================
+⚖️  Файнтюнинг Сферы 047: СЛЕДОВАТЕЛЬ
+================================================================================
+
+💻 Устройство: Apple M4 (MPS)
+📦 Базовая модель: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+📚 Датасет: datasets/legal_108_perfect.jsonl
+🎯 Максимум шагов: 600 (~2 часа)
+💾 Выход: ../models/sphere_047_m4_overnight
+
+📥 Загрузка токенизатора...
+   ✅ Токенизатор загружен
+
+📥 Загрузка модели...
+   🍎 Используем Apple Silicon MPS
+   ✅ Модель загружена на MPS
+   📊 Параметров: 1,100,048,384
+
+🔧 Настройка LoRA (минимальная версия для скорости)...
+'NoneType' object has no attribute 'cadam32bit_grad_fp32'
+   ✅ LoRA применен
+   🎯 Обучаемых: 1,126,400 (0.10%)
+   📊 Всего: 1,101,174,784
+
+📚 Загрузка датасета...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 1512 examples [00:00, 301487.41 examples/s]
+Filter:   0%|          | 0/1512 [00:00<?, ? examples/s]Filter: 100%|██████████| 1512/1512 [00:00<00:00, 197618.89 examples/s]
+   📊 Примеров для Сферы 047: 1188
+
+🔤 Токенизация...
+Токенизация:   0%|          | 0/1188 [00:00<?, ? examples/s]Токенизация:  57%|█████▋    | 679/1188 [00:00<00:00, 6753.12 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4160.64 examples/s]
+   ✅ Токенизировано: 1188 примеров
+
+⚙️  Параметры обучения (оптимизировано для M4)...
+   ✅ Параметры:
+      Эпох: 1
+      Batch size: 8
+      Градиент accumulation: 2
+      Max steps: 600
+      Эффективный batch: 16
+
+🏗️  Создание Trainer...
+Traceback (most recent call last):
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 281, in <module>
+    finetune_sphere_m4(
+    ~~~~~~~~~~~~~~~~~~^
+        sphere=args.sphere,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        batch_size=args.batch_size
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 199, in finetune_sphere_m4
+    trainer = Trainer(
+        model=model,
+    ...<2 lines>...
+        data_collator=data_collator
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 680, in __init__
+    self.callback_handler = CallbackHandler(
+                            ~~~~~~~~~~~~~~~^
+        callbacks, self.model, self.processing_class, self.optimizer, self.lr_scheduler
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer_callback.py", line 449, in __init__
+    self.add_callback(cb)
+    ~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer_callback.py", line 466, in add_callback
+    cb = callback() if isinstance(callback, type) else callback
+         ~~~~~~~~^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/integrations/integration_utils.py", line 681, in __init__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: TensorBoardCallback requires tensorboard to be installed. Either update your PyTorch version or install tensorboardX.

@@ -1,0 +1,133 @@
+================================================================================
+🌙 НОЧНОЙ ФАЙНТЮНИНГ на M4 MacBook Pro
+================================================================================
+
+💻 Устройство: Apple M4
+💾 Память: 32GB Shared Memory
+⏱️  Время: ~8 часов (до утра)
+
+🙏 Духовная миссия: Служение истине через обучение AI
+
+🔧 Активация виртуального окружения...
+✅ PyTorch 2.9.0
+✅ MPS доступен: True
+
+================================================================================
+📚 ЭТАП 1: Подготовка объединенного датасета
+================================================================================
+
+✅ Датасет уже существует
+{
+  "total_examples": 2151,
+  "sphere_distribution": {
+    "047": 6,
+    "048": 6,
+    "049": 6,
+    "general": 1992,
+    "001": 141
+  },
+  "sources": [
+    null,
+    "kene_spiritual",
+    "alpaca"
+  ]
+}
+✅ Датасет готов
+
+🔧 Проверка зависимостей...
+✅ Все зависимости установлены
+
+================================================================================
+🔥 ЭТАП 2: Файнтюнинг трех сфер
+================================================================================
+
+⏰ Начало: 19:30:36
+
+--------------------------------------------------------------------------------
+⚖️  Сфера 047: СЛЕДОВАТЕЛЬ
+--------------------------------------------------------------------------------
+`torch_dtype` is deprecated! Use `dtype` instead!
+/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/bitsandbytes/cextension.py:34: UserWarning: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+  warn("The installed version of bitsandbytes was compiled without GPU support. "
+================================================================================
+⚖️  Файнтюнинг Сферы 047: СЛЕДОВАТЕЛЬ
+================================================================================
+
+💻 Устройство: Apple M4 (MPS)
+📦 Базовая модель: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+📚 Датасет: ../datasets/combined_legal_training.jsonl
+🎯 Максимум шагов: 800 (~2 часа)
+💾 Выход: ../models/sphere_047_m4_overnight
+
+📥 Загрузка токенизатора...
+   ✅ Токенизатор загружен
+
+📥 Загрузка модели...
+   🍎 Используем Apple Silicon MPS
+   ✅ Модель загружена на MPS
+   📊 Параметров: 1,100,048,384
+
+🔧 Настройка LoRA (минимальная версия для скорости)...
+'NoneType' object has no attribute 'cadam32bit_grad_fp32'
+   ✅ LoRA применен
+   🎯 Обучаемых: 1,126,400 (0.10%)
+   📊 Всего: 1,101,174,784
+
+📚 Загрузка датасета...
+Traceback (most recent call last):
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 281, in <module>
+    finetune_sphere_m4(
+    ~~~~~~~~~~~~~~~~~~^
+        sphere=args.sphere,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        batch_size=args.batch_size
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 116, in finetune_sphere_m4
+    dataset = load_dataset('json', data_files=dataset_path, split='train')
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/load.py", line 1397, in load_dataset
+    builder_instance = load_dataset_builder(
+        path=path,
+    ...<10 lines>...
+        **config_kwargs,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/load.py", line 1137, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+        path,
+    ...<5 lines>...
+        cache_dir=cache_dir,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/load.py", line 913, in dataset_module_factory
+    ).get_module()
+      ~~~~~~~~~~^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/load.py", line 527, in get_module
+    data_files = DataFilesDict.from_patterns(
+        patterns,
+        download_config=self.download_config,
+        base_path=base_path,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/data_files.py", line 701, in from_patterns
+    else DataFilesList.from_patterns(
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        patterns_for_key,
+        ^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        download_config=download_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/data_files.py", line 594, in from_patterns
+    resolve_pattern(
+    ~~~~~~~~~~~~~~~^
+        pattern,
+        ^^^^^^^^
+    ...<2 lines>...
+        download_config=download_config,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/datasets/data_files.py", line 383, in resolve_pattern
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Unable to find '/Users/anton/proj/ai.nativemind.net/multimodal_braindler/../datasets/combined_legal_training.jsonl'

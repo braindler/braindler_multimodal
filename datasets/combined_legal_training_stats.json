@@ -1,0 +1,15 @@
+{
+  "total_examples": 2151,
+  "sphere_distribution": {
+    "047": 6,
+    "048": 6,
+    "049": 6,
+    "general": 1992,
+    "001": 141
+  },
+  "sources": [
+    null,
+    "kene_spiritual",
+    "alpaca"
+  ]
+}
