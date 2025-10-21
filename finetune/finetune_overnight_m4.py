@@ -82,8 +82,12 @@ def finetune_sphere_m4(
     model = AutoModelForCausalLM.from_pretrained(
         base_model,
         torch_dtype=torch.float32,  # MPS лучше работает с FP32
-        trust_remote_code=True
+        trust_remote_code=True,
+        use_cache=False,  # Экономия памяти
     )
+    
+    # Gradient checkpointing для экономии памяти
+    model.gradient_checkpointing_enable()
     
     model = model.to("mps")
     
@@ -163,22 +167,24 @@ def finetune_sphere_m4(
     
     training_args = TrainingArguments(
         output_dir=output_dir,
-        num_train_epochs=1,  # Одна эпоха для скорости
-        per_device_train_batch_size=batch_size,  # M4 справится с 8
-        gradient_accumulation_steps=2,  # Эффективный batch = 16
-        learning_rate=5e-4,  # Быстрая сходимость
+        num_train_epochs=1,
+        per_device_train_batch_size=1,  # Минимум для экономии памяти!
+        gradient_accumulation_steps=16,  # Эффективный batch = 16
+        learning_rate=5e-4,
         warmup_steps=50,
         logging_steps=20,
-        save_steps=400,
-        save_total_limit=2,
-        max_steps=max_steps,  # Ограничиваем для укладки в ~2 часа
-        fp16=False,  # MPS не поддерживает FP16
+        save_steps=300,
+        save_total_limit=1,  # Храним только последний checkpoint
+        max_steps=max_steps,
+        fp16=False,
         bf16=False,
         use_cpu=False,
         optim="adamw_torch",
         logging_dir=f"{output_dir}/logs",
-        report_to=["tensorboard"],
+        report_to=[],
         remove_unused_columns=False,
+        gradient_checkpointing=True,  # Экономия памяти!
+        dataloader_num_workers=0,  # Без параллельной загрузки
     )
     
     print("   ✅ Параметры:")
