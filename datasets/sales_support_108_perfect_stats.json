@@ -1,0 +1,15 @@
+{
+  "total": 972,
+  "distribution": {
+    "001_spiritual": 108,
+    "019_sales_manager": 108,
+    "020_account_manager": 108,
+    "021_presales_engineer": 108,
+    "022_business_developer": 108,
+    "023_customer_support": 108,
+    "024_technical_support": 108,
+    "025_customer_success": 108,
+    "026_solution_architect": 108,
+    "general_alpaca": 0
+  }
+}

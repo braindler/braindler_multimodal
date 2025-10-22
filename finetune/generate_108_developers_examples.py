@@ -15,16 +15,24 @@ import os
 import subprocess
 from pathlib import Path
 
-def call_ollama(prompt, model="nativemind/mozgach108-light:latest"):
+def _ollama_bin():
+    return os.environ.get("OLLAMA_BIN", "/opt/homebrew/bin/ollama")
+
+def call_ollama(prompt, model="mozgach108:latest"):
     """Вызывает Ollama для генерации"""
     try:
+        selected_model = os.environ.get("OLLAMA_MODEL", model)
         result = subprocess.run(
-            ["/opt/homebrew/bin/ollama", "run", model, prompt],
+            [_ollama_bin(), "run", selected_model, prompt],
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=120
         )
-        return result.stdout.strip()
+        stdout = (result.stdout or "").strip()
+        stderr = (result.stderr or "").strip()
+        if result.returncode != 0:
+            return f"Ошибка ollama (code {result.returncode}): {stderr or stdout}"
+        return stdout or stderr
     except Exception as e:
         return f"Ошибка: {e}"
 
@@ -452,8 +460,10 @@ def main():
     
     # Проверяем Ollama
     try:
-        result = subprocess.run(["/opt/homebrew/bin/ollama", "version"], capture_output=True, text=True)
-        print(f"✅ Ollama доступен: {result.stdout.strip()}")
+        result = subprocess.run([_ollama_bin(), "--version"], capture_output=True, text=True)
+        ver = (result.stdout or result.stderr or "").strip()
+        print(f"✅ Ollama доступен: {ver}")
+        print(f"🧠 Модель: {os.environ.get('OLLAMA_MODEL', 'mozgach108:latest')}")
     except Exception as e:
         print(f"❌ Ошибка Ollama: {e}")
         return
@@ -554,4 +564,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 

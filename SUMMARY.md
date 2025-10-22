@@ -365,3 +365,5 @@ if result['copypaste_analysis'].text_similarity >= 70:
 
 
 
+
+
