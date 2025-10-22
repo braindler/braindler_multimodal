@@ -363,3 +363,5 @@ if result['copypaste_analysis'].text_similarity >= 70:
 **Автор:** NativeMind  
 **Проект:** ai.nativemind.net
 
+
+

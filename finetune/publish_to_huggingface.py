@@ -249,3 +249,5 @@ if __name__ == "__main__":
         print("❌ Укажите либо --all, либо --model-dir и --repo-name")
         parser.print_help()
 
+
+

@@ -262,3 +262,5 @@ class MultimodalMozgach(MultimodalBraindler):
         prompt = "Опиши эту диаграмму или схему. Объясни её смысл и компоненты."
         return self.chat(prompt, image=image)
 
+
+

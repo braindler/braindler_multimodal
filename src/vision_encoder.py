@@ -109,3 +109,5 @@ class VisionEncoder:
         """Позволяет использовать как функцию"""
         return self.encode(image)
 
+
+

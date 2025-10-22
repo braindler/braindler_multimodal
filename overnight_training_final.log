@@ -1,0 +1,433 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/bitsandbytes/cextension.py:34: UserWarning: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+  warn("The installed version of bitsandbytes was compiled without GPU support. "
+================================================================================
+⚖️  Файнтюнинг Сферы 047: СЛЕДОВАТЕЛЬ
+================================================================================
+
+💻 Устройство: Apple M4 (MPS)
+📦 Базовая модель: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+📚 Датасет: datasets/legal_108_perfect.jsonl
+🎯 Максимум шагов: 600 (~2 часа)
+💾 Выход: ../models/sphere_047_m4_overnight
+
+📥 Загрузка токенизатора...
+   ✅ Токенизатор загружен
+
+📥 Загрузка модели...
+   🍎 Используем Apple Silicon MPS
+   ✅ Модель загружена на MPS
+   📊 Параметров: 1,100,048,384
+
+🔧 Настройка LoRA (минимальная версия для скорости)...
+'NoneType' object has no attribute 'cadam32bit_grad_fp32'
+   ✅ LoRA применен
+   🎯 Обучаемых: 1,126,400 (0.10%)
+   📊 Всего: 1,101,174,784
+
+📚 Загрузка датасета...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 1512 examples [00:00, 172387.40 examples/s]
+Filter:   0%|          | 0/1512 [00:00<?, ? examples/s]Filter: 100%|██████████| 1512/1512 [00:00<00:00, 190021.80 examples/s]
+   📊 Примеров для Сферы 047: 1188
+
+🔤 Токенизация...
+Токенизация:   0%|          | 0/1188 [00:00<?, ? examples/s]Токенизация:  43%|████▎     | 516/1188 [00:00<00:00, 5076.19 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4066.69 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4088.75 examples/s]
+   ✅ Токенизировано: 1188 примеров
+
+⚙️  Параметры обучения (оптимизировано для M4)...
+   ✅ Параметры:
+      Эпох: 1
+      Batch size: 8
+      Градиент accumulation: 2
+      Max steps: 600
+      Эффективный batch: 16
+
+🏗️  Создание Trainer...
+   ✅ Trainer готов
+
+================================================================================
+🏋️  НАЧИНАЕМ ОБУЧЕНИЕ Сферы 047: СЛЕДОВАТЕЛЬ
+================================================================================
+
+🙏 Духовная миссия: Служение истине через обучение AI
+⏱️  Ожидаемое время: ~2 часа
+
+  0%|          | 0/600 [00:00<?, ?it/s]/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:692: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  warnings.warn(warn_msg)
+Traceback (most recent call last):
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 218, in finetune_sphere_m4
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 4020, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 4110, in compute_loss
+    outputs = model(**inputs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/peft/peft_model.py", line 1850, in forward
+    return self.base_model(
+           ~~~~~~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/peft/tuners/tuners_utils.py", line 222, in forward
+    return self.model.forward(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 459, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 395, in forward
+    hidden_states = decoder_layer(
+        hidden_states,
+    ...<5 lines>...
+        **kwargs,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 294, in forward
+    hidden_states, _ = self.self_attn(
+                       ~~~~~~~~~~~~~~^
+        hidden_states=hidden_states,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 252, in forward
+    attn_output, attn_weights = attention_interface(
+                                ~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/integrations/sdpa_attention.py", line 96, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+        query,
+    ...<6 lines>...
+        **sdpa_kwargs,
+    )
+RuntimeError: MPS backend out of memory (MPS allocated: 61.69 GiB, other allocations: 1.07 GiB, max allowed: 63.65 GiB). Tried to allocate 1024.00 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+  0%|          | 0/600 [00:17<?, ?it/s]
+
+❌ Ошибка: MPS backend out of memory (MPS allocated: 61.69 GiB, other allocations: 1.07 GiB, max allowed: 63.65 GiB). Tried to allocate 1024.00 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+`torch_dtype` is deprecated! Use `dtype` instead!
+/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/bitsandbytes/cextension.py:34: UserWarning: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+  warn("The installed version of bitsandbytes was compiled without GPU support. "
+================================================================================
+⚖️  Файнтюнинг Сферы 048: ПРОКУРОР
+================================================================================
+
+💻 Устройство: Apple M4 (MPS)
+📦 Базовая модель: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+📚 Датасет: datasets/legal_108_perfect.jsonl
+🎯 Максимум шагов: 600 (~2 часа)
+💾 Выход: ../models/sphere_048_m4_overnight
+
+📥 Загрузка токенизатора...
+   ✅ Токенизатор загружен
+
+📥 Загрузка модели...
+   🍎 Используем Apple Silicon MPS
+   ✅ Модель загружена на MPS
+   📊 Параметров: 1,100,048,384
+
+🔧 Настройка LoRA (минимальная версия для скорости)...
+'NoneType' object has no attribute 'cadam32bit_grad_fp32'
+   ✅ LoRA применен
+   🎯 Обучаемых: 1,126,400 (0.10%)
+   📊 Всего: 1,101,174,784
+
+📚 Загрузка датасета...
+Filter:   0%|          | 0/1512 [00:00<?, ? examples/s]Filter: 100%|██████████| 1512/1512 [00:00<00:00, 147744.56 examples/s]
+   📊 Примеров для Сферы 048: 1188
+
+🔤 Токенизация...
+Токенизация:   0%|          | 0/1188 [00:00<?, ? examples/s]Токенизация:  41%|████▏     | 491/1188 [00:00<00:00, 4892.04 examples/s]Токенизация:  84%|████████▍ | 1000/1188 [00:00<00:00, 3869.02 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4039.47 examples/s]
+   ✅ Токенизировано: 1188 примеров
+
+⚙️  Параметры обучения (оптимизировано для M4)...
+   ✅ Параметры:
+      Эпох: 1
+      Batch size: 8
+      Градиент accumulation: 2
+      Max steps: 600
+      Эффективный batch: 16
+
+🏗️  Создание Trainer...
+   ✅ Trainer готов
+
+================================================================================
+🏋️  НАЧИНАЕМ ОБУЧЕНИЕ Сферы 048: ПРОКУРОР
+================================================================================
+
+🙏 Духовная миссия: Служение истине через обучение AI
+⏱️  Ожидаемое время: ~2 часа
+
+  0%|          | 0/600 [00:00<?, ?it/s]/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:692: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  warnings.warn(warn_msg)
+Traceback (most recent call last):
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/finetune/finetune_overnight_m4.py", line 218, in finetune_sphere_m4
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 4020, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/trainer.py", line 4110, in compute_loss
+    outputs = model(**inputs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/peft/peft_model.py", line 1850, in forward
+    return self.base_model(
+           ~~~~~~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/peft/tuners/tuners_utils.py", line 222, in forward
+    return self.model.forward(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 459, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 395, in forward
+    hidden_states = decoder_layer(
+        hidden_states,
+    ...<5 lines>...
+        **kwargs,
+    )
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 294, in forward
+    hidden_states, _ = self.self_attn(
+                       ~~~~~~~~~~~~~~^
+        hidden_states=hidden_states,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/models/llama/modeling_llama.py", line 252, in forward
+    attn_output, attn_weights = attention_interface(
+                                ~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/transformers/integrations/sdpa_attention.py", line 96, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+        query,
+    ...<6 lines>...
+        **sdpa_kwargs,
+    )
+RuntimeError: MPS backend out of memory (MPS allocated: 62.56 GiB, other allocations: 1.07 GiB, max allowed: 63.65 GiB). Tried to allocate 64.00 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+  0%|          | 0/600 [00:10<?, ?it/s]
+
+❌ Ошибка: MPS backend out of memory (MPS allocated: 62.56 GiB, other allocations: 1.07 GiB, max allowed: 63.65 GiB). Tried to allocate 64.00 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+`torch_dtype` is deprecated! Use `dtype` instead!
+/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/bitsandbytes/cextension.py:34: UserWarning: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+  warn("The installed version of bitsandbytes was compiled without GPU support. "
+================================================================================
+⚖️  Файнтюнинг Сферы 049: СУДЬЯ
+================================================================================
+
+💻 Устройство: Apple M4 (MPS)
+📦 Базовая модель: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+📚 Датасет: datasets/legal_108_perfect.jsonl
+🎯 Максимум шагов: 600 (~2 часа)
+💾 Выход: ../models/sphere_049_m4_overnight
+
+📥 Загрузка токенизатора...
+   ✅ Токенизатор загружен
+
+📥 Загрузка модели...
+   🍎 Используем Apple Silicon MPS
+   ✅ Модель загружена на MPS
+   📊 Параметров: 1,100,048,384
+
+🔧 Настройка LoRA (минимальная версия для скорости)...
+'NoneType' object has no attribute 'cadam32bit_grad_fp32'
+   ✅ LoRA применен
+   🎯 Обучаемых: 1,126,400 (0.10%)
+   📊 Всего: 1,101,174,784
+
+📚 Загрузка датасета...
+Filter:   0%|          | 0/1512 [00:00<?, ? examples/s]Filter: 100%|██████████| 1512/1512 [00:00<00:00, 218629.56 examples/s]
+   📊 Примеров для Сферы 049: 1188
+
+🔤 Токенизация...
+Токенизация:   0%|          | 0/1188 [00:00<?, ? examples/s]Токенизация:  44%|████▍     | 522/1188 [00:00<00:00, 5178.47 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4070.88 examples/s]Токенизация: 100%|██████████| 1188/1188 [00:00<00:00, 4169.84 examples/s]
+   ✅ Токенизировано: 1188 примеров
+
+⚙️  Параметры обучения (оптимизировано для M4)...
+   ✅ Параметры:
+      Эпох: 1
+      Batch size: 8
+      Градиент accumulation: 2
+      Max steps: 600
+      Эффективный batch: 16
+
+🏗️  Создание Trainer...
+   ✅ Trainer готов
+
+================================================================================
+🏋️  НАЧИНАЕМ ОБУЧЕНИЕ Сферы 049: СУДЬЯ
+================================================================================
+
+🙏 Духовная миссия: Служение истине через обучение AI
+⏱️  Ожидаемое время: ~2 часа
+
+  0%|          | 0/600 [00:00<?, ?it/s]/Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:692: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  warnings.warn(warn_msg)
+  0%|          | 1/600 [00:17<2:57:53, 17.82s/it]  0%|          | 2/600 [00:35<2:57:54, 17.85s/it]  0%|          | 3/600 [00:53<2:58:33, 17.95s/it]  1%|          | 4/600 [01:12<3:02:48, 18.40s/it]  1%|          | 5/600 [01:36<3:21:02, 20.27s/it]  1%|          | 6/600 [02:19<4:38:30, 28.13s/it]  1%|          | 7/600 [02:58<5:10:52, 31.46s/it]  1%|▏         | 8/600 [03:29<5:10:02, 31.42s/it]  2%|▏         | 9/600 [03:55<4:53:08, 29.76s/it]  2%|▏         | 10/600 [04:22<4:44:04, 28.89s/it]  2%|▏         | 11/600 [04:47<4:33:03, 27.82s/it]  2%|▏         | 12/600 [05:12<4:23:56, 26.93s/it]  2%|▏         | 13/600 [05:38<4:18:51, 26.46s/it]  2%|▏         | 14/600 [06:03<4:15:50, 26.20s/it]  2%|▎         | 15/600 [06:28<4:10:25, 25.68s/it]  3%|▎         | 16/600 [06:52<4:05:27, 25.22s/it]  3%|▎         | 17/600 [07:15<3:59:50, 24.68s/it]  3%|▎         | 18/600 [07:39<3:56:19, 24.36s/it]  3%|▎         | 19/600 [08:02<3:53:03, 24.07s/it]  3%|▎         | 20/600 [08:26<3:50:59, 23.90s/it]                                                    3%|▎         | 20/600 [08:26<3:50:59, 23.90s/it]  4%|▎         | 21/600 [08:49<3:49:13, 23.75s/it]  4%|▎         | 22/600 [09:13<3:47:28, 23.61s/it]  4%|▍         | 23/600 [09:36<3:46:44, 23.58s/it]  4%|▍         | 24/600 [10:01<3:51:30, 24.12s/it]  4%|▍         | 25/600 [10:34<4:14:35, 26.57s/it]  4%|▍         | 26/600 [11:06<4:30:58, 28.32s/it]  4%|▍         | 27/600 [11:38<4:41:58, 29.53s/it]  5%|▍         | 28/600 [12:10<4:47:02, 30.11s/it]  5%|▍         | 29/600 [12:42<4:51:57, 30.68s/it]  5%|▌         | 30/600 [13:13<4:52:51, 30.83s/it]  5%|▌         | 31/600 [13:45<4:54:20, 31.04s/it]  5%|▌         | 32/600 [14:18<5:00:34, 31.75s/it]  6%|▌         | 33/600 [14:52<5:05:38, 32.34s/it]  6%|▌         | 34/600 [15:24<5:06:05, 32.45s/it]  6%|▌         | 35/600 [15:57<5:06:43, 32.57s/it]  6%|▌         | 36/600 [16:29<5:03:56, 32.33s/it]  6%|▌         | 37/600 [17:02<5:03:39, 32.36s/it]  6%|▋         | 38/600 [17:34<5:02:46, 32.33s/it]  6%|▋         | 39/600 [18:06<5:01:20, 32.23s/it]  7%|▋         | 40/600 [18:37<4:58:50, 32.02s/it]                                                    7%|▋         | 40/600 [18:37<4:58:50, 32.02s/it]  7%|▋         | 41/600 [19:10<4:59:07, 32.11s/it]  7%|▋         | 42/600 [19:39<4:50:36, 31.25s/it]  7%|▋         | 43/600 [20:09<4:46:14, 30.83s/it]  7%|▋         | 44/600 [20:38<4:40:44, 30.30s/it]  8%|▊         | 45/600 [21:04<4:29:35, 29.15s/it]  8%|▊         | 46/600 [21:33<4:28:22, 29.07s/it]  8%|▊         | 47/600 [22:03<4:29:23, 29.23s/it]  8%|▊         | 48/600 [22:33<4:31:14, 29.48s/it]  8%|▊         | 49/600 [23:02<4:31:10, 29.53s/it]  8%|▊         | 50/600 [23:31<4:28:56, 29.34s/it]  8%|▊         | 51/600 [24:01<4:28:55, 29.39s/it]  9%|▊         | 52/600 [24:30<4:27:58, 29.34s/it]  9%|▉         | 53/600 [24:59<4:27:34, 29.35s/it]  9%|▉         | 54/600 [25:29<4:28:27, 29.50s/it]  9%|▉         | 55/600 [25:58<4:25:17, 29.21s/it]  9%|▉         | 56/600 [26:27<4:24:45, 29.20s/it] 10%|▉         | 57/600 [26:56<4:24:33, 29.23s/it] 10%|▉         | 58/600 [27:25<4:23:48, 29.20s/it] 10%|▉         | 59/600 [27:55<4:24:12, 29.30s/it] 10%|█         | 60/600 [28:25<4:25:31, 29.50s/it]                                                   10%|█         | 60/600 [28:25<4:25:31, 29.50s/it] 10%|█         | 61/600 [28:55<4:26:08, 29.63s/it] 10%|█         | 62/600 [29:25<4:26:29, 29.72s/it] 10%|█         | 63/600 [29:54<4:25:25, 29.66s/it] 11%|█         | 64/600 [30:24<4:26:07, 29.79s/it] 11%|█         | 65/600 [30:54<4:25:11, 29.74s/it] 11%|█         | 66/600 [31:23<4:23:24, 29.60s/it] 11%|█         | 67/600 [31:54<4:24:43, 29.80s/it] 11%|█▏        | 68/600 [32:24<4:24:56, 29.88s/it] 12%|█▏        | 69/600 [32:53<4:24:05, 29.84s/it] 12%|█▏        | 70/600 [33:23<4:23:59, 29.89s/it] 12%|█▏        | 71/600 [33:53<4:23:41, 29.91s/it] 12%|█▏        | 72/600 [34:23<4:22:52, 29.87s/it] 12%|█▏        | 73/600 [34:53<4:22:51, 29.93s/it] 12%|█▏        | 74/600 [35:24<4:24:38, 30.19s/it] 12%|█▎        | 75/600 [35:32<3:26:07, 23.56s/it] 13%|█▎        | 76/600 [36:05<3:49:15, 26.25s/it] 13%|█▎        | 77/600 [36:35<3:59:39, 27.49s/it] 13%|█▎        | 78/600 [37:06<4:07:17, 28.43s/it] 13%|█▎        | 79/600 [37:36<4:12:33, 29.09s/it] 13%|█▎        | 80/600 [38:06<4:13:35, 29.26s/it]                                                   13%|█▎        | 80/600 [38:06<4:13:35, 29.26s/it] 14%|█▎        | 81/600 [38:36<4:14:06, 29.38s/it] 14%|█▎        | 82/600 [39:05<4:14:40, 29.50s/it] 14%|█▍        | 83/600 [39:35<4:15:54, 29.70s/it] 14%|█▍        | 84/600 [40:06<4:16:38, 29.84s/it] 14%|█▍        | 85/600 [40:36<4:16:24, 29.87s/it] 14%|█▍        | 86/600 [41:06<4:17:30, 30.06s/it] 14%|█▍        | 87/600 [41:36<4:17:08, 30.07s/it] 15%|█▍        | 88/600 [42:06<4:15:35, 29.95s/it] 15%|█▍        | 89/600 [42:36<4:16:05, 30.07s/it] 15%|█▌        | 90/600 [43:06<4:15:41, 30.08s/it] 15%|█▌        | 91/600 [43:36<4:14:05, 29.95s/it] 15%|█▌        | 92/600 [44:06<4:13:05, 29.89s/it] 16%|█▌        | 93/600 [44:36<4:13:07, 29.96s/it] 16%|█▌        | 94/600 [45:06<4:12:28, 29.94s/it] 16%|█▌        | 95/600 [45:35<4:11:15, 29.85s/it] 16%|█▌        | 96/600 [46:06<4:11:48, 29.98s/it] 16%|█▌        | 97/600 [46:35<4:10:44, 29.91s/it] 16%|█▋        | 98/600 [47:05<4:10:22, 29.93s/it] 16%|█▋        | 99/600 [47:35<4:10:19, 29.98s/it] 17%|█▋        | 100/600 [48:06<4:11:20, 30.16s/it]                                                    17%|█▋        | 100/600 [48:06<4:11:20, 30.16s/it] 17%|█▋        | 101/600 [48:35<4:08:34, 29.89s/it] 17%|█▋        | 102/600 [49:05<4:06:49, 29.74s/it] 17%|█▋        | 103/600 [49:34<4:05:52, 29.68s/it] 17%|█▋        | 104/600 [50:03<4:03:49, 29.50s/it] 18%|█▊        | 105/600 [50:32<4:02:04, 29.34s/it] 18%|█▊        | 106/600 [51:02<4:01:32, 29.34s/it] 18%|█▊        | 107/600 [51:31<4:01:13, 29.36s/it] 18%|█▊        | 108/600 [52:00<4:00:02, 29.27s/it] 18%|█▊        | 109/600 [52:29<3:59:40, 29.29s/it] 18%|█▊        | 110/600 [52:59<3:59:40, 29.35s/it] 18%|█▊        | 111/600 [53:28<3:59:29, 29.38s/it] 19%|█▊        | 112/600 [53:58<3:58:57, 29.38s/it] 19%|█▉        | 113/600 [54:27<3:58:33, 29.39s/it] 19%|█▉        | 114/600 [54:56<3:57:24, 29.31s/it] 19%|█▉        | 115/600 [55:26<3:57:40, 29.40s/it] 19%|█▉        | 116/600 [55:55<3:57:27, 29.44s/it] 20%|█▉        | 117/600 [56:24<3:55:07, 29.21s/it] 20%|█▉        | 118/600 [56:53<3:54:29, 29.19s/it] 20%|█▉        | 119/600 [57:23<3:55:37, 29.39s/it] 20%|██        | 120/600 [57:53<3:55:58, 29.50s/it]                                                    20%|██        | 120/600 [57:53<3:55:58, 29.50s/it] 20%|██        | 121/600 [58:22<3:55:31, 29.50s/it] 20%|██        | 122/600 [58:52<3:54:14, 29.40s/it] 20%|██        | 123/600 [59:21<3:53:40, 29.39s/it] 21%|██        | 124/600 [59:50<3:53:19, 29.41s/it] 21%|██        | 125/600 [1:00:20<3:53:27, 29.49s/it] 21%|██        | 126/600 [1:00:49<3:51:05, 29.25s/it] 21%|██        | 127/600 [1:01:18<3:50:59, 29.30s/it] 21%|██▏       | 128/600 [1:01:48<3:52:41, 29.58s/it] 22%|██▏       | 129/600 [1:02:19<3:53:56, 29.80s/it] 22%|██▏       | 130/600 [1:02:49<3:53:59, 29.87s/it] 22%|██▏       | 131/600 [1:03:19<3:53:34, 29.88s/it] 22%|██▏       | 132/600 [1:03:48<3:51:59, 29.74s/it] 22%|██▏       | 133/600 [1:04:17<3:50:20, 29.59s/it] 22%|██▏       | 134/600 [1:04:48<3:51:26, 29.80s/it] 22%|██▎       | 135/600 [1:05:18<3:51:35, 29.88s/it] 23%|██▎       | 136/600 [1:05:48<3:51:03, 29.88s/it] 23%|██▎       | 137/600 [1:06:17<3:49:36, 29.75s/it] 23%|██▎       | 138/600 [1:06:46<3:48:15, 29.64s/it] 23%|██▎       | 139/600 [1:07:16<3:47:40, 29.63s/it] 23%|██▎       | 140/600 [1:07:46<3:49:10, 29.89s/it]                                                      23%|██▎       | 140/600 [1:07:46<3:49:10, 29.89s/it] 24%|██▎       | 141/600 [1:08:16<3:48:05, 29.82s/it] 24%|██▎       | 142/600 [1:08:46<3:47:20, 29.78s/it] 24%|██▍       | 143/600 [1:09:15<3:46:19, 29.71s/it] 24%|██▍       | 144/600 [1:09:45<3:46:05, 29.75s/it] 24%|██▍       | 145/600 [1:10:15<3:45:10, 29.69s/it] 24%|██▍       | 146/600 [1:10:45<3:45:02, 29.74s/it] 24%|██▍       | 147/600 [1:11:14<3:44:13, 29.70s/it] 25%|██▍       | 148/600 [1:11:46<3:47:31, 30.20s/it] 25%|██▍       | 149/600 [1:12:16<3:46:27, 30.13s/it] 25%|██▌       | 150/600 [1:12:26<3:01:09, 24.15s/it] 25%|██▌       | 151/600 [1:12:56<3:15:17, 26.10s/it] 25%|██▌       | 152/600 [1:13:27<3:24:24, 27.38s/it] 26%|██▌       | 153/600 [1:13:57<3:30:09, 28.21s/it] 26%|██▌       | 154/600 [1:14:27<3:34:21, 28.84s/it] 26%|██▌       | 155/600 [1:14:57<3:36:21, 29.17s/it] 26%|██▌       | 156/600 [1:15:27<3:37:51, 29.44s/it] 26%|██▌       | 157/600 [1:15:57<3:38:21, 29.57s/it] 26%|██▋       | 158/600 [1:16:27<3:39:28, 29.79s/it] 26%|██▋       | 159/600 [1:16:57<3:38:11, 29.69s/it] 27%|██▋       | 160/600 [1:17:25<3:35:15, 29.35s/it]                                                      27%|██▋       | 160/600 [1:17:25<3:35:15, 29.35s/it] 27%|██▋       | 161/600 [1:17:55<3:35:21, 29.43s/it] 27%|██▋       | 162/600 [1:18:24<3:34:43, 29.41s/it] 27%|██▋       | 163/600 [1:18:54<3:33:49, 29.36s/it] 27%|██▋       | 164/600 [1:19:23<3:34:19, 29.49s/it] 28%|██▊       | 165/600 [1:19:54<3:35:43, 29.75s/it] 28%|██▊       | 166/600 [1:20:25<3:37:20, 30.05s/it] 28%|██▊       | 167/600 [1:20:56<3:40:05, 30.50s/it] 28%|██▊       | 168/600 [1:21:27<3:39:29, 30.49s/it] 28%|██▊       | 169/600 [1:21:58<3:40:41, 30.72s/it] 28%|██▊       | 170/600 [1:22:29<3:41:48, 30.95s/it] 28%|██▊       | 171/600 [1:23:01<3:43:02, 31.19s/it] 29%|██▊       | 172/600 [1:23:32<3:42:44, 31.23s/it] 29%|██▉       | 173/600 [1:24:04<3:43:43, 31.44s/it] 29%|██▉       | 174/600 [1:24:37<3:45:39, 31.78s/it] 29%|██▉       | 175/600 [1:25:08<3:44:40, 31.72s/it] 29%|██▉       | 176/600 [1:25:40<3:44:29, 31.77s/it] 30%|██▉       | 177/600 [1:26:12<3:44:09, 31.80s/it] 30%|██▉       | 178/600 [1:26:44<3:44:13, 31.88s/it] 30%|██▉       | 179/600 [1:27:15<3:42:08, 31.66s/it] 30%|███       | 180/600 [1:27:47<3:41:39, 31.66s/it]                                                      30%|███       | 180/600 [1:27:47<3:41:39, 31.66s/it] 30%|███       | 181/600 [1:28:19<3:40:34, 31.59s/it] 30%|███       | 182/600 [1:28:50<3:39:12, 31.47s/it] 30%|███       | 183/600 [1:29:20<3:36:28, 31.15s/it] 31%|███       | 184/600 [1:29:51<3:35:05, 31.02s/it] 31%|███       | 185/600 [1:30:21<3:33:40, 30.89s/it] 31%|███       | 186/600 [1:30:52<3:32:28, 30.79s/it] 31%|███       | 187/600 [1:31:22<3:31:20, 30.70s/it] 31%|███▏      | 188/600 [1:31:53<3:29:58, 30.58s/it] 32%|███▏      | 189/600 [1:32:23<3:27:48, 30.34s/it] 32%|███▏      | 190/600 [1:32:53<3:27:13, 30.32s/it] 32%|███▏      | 191/600 [1:33:23<3:26:19, 30.27s/it] 32%|███▏      | 192/600 [1:33:54<3:26:52, 30.42s/it] 32%|███▏      | 193/600 [1:34:24<3:25:04, 30.23s/it] 32%|███▏      | 194/600 [1:34:53<3:23:54, 30.14s/it] 32%|███▎      | 195/600 [1:35:23<3:21:50, 29.90s/it] 33%|███▎      | 196/600 [1:35:53<3:22:17, 30.04s/it] 33%|███▎      | 197/600 [1:36:23<3:21:55, 30.06s/it] 33%|███▎      | 198/600 [1:36:53<3:21:18, 30.05s/it] 33%|███▎      | 199/600 [1:37:23<3:20:49, 30.05s/it] 33%|███▎      | 200/600 [1:37:54<3:20:49, 30.12s/it]                                                      33%|███▎      | 200/600 [1:37:54<3:20:49, 30.12s/it] 34%|███▎      | 201/600 [1:38:24<3:20:22, 30.13s/it] 34%|███▎      | 202/600 [1:38:54<3:20:43, 30.26s/it] 34%|███▍      | 203/600 [1:39:24<3:19:19, 30.13s/it] 34%|███▍      | 204/600 [1:39:55<3:19:14, 30.19s/it] 34%|███▍      | 205/600 [1:40:24<3:18:07, 30.09s/it] 34%|███▍      | 206/600 [1:40:54<3:16:13, 29.88s/it] 34%|███▍      | 207/600 [1:41:23<3:15:03, 29.78s/it] 35%|███▍      | 208/600 [1:41:53<3:14:39, 29.80s/it] 35%|███▍      | 209/600 [1:42:23<3:14:04, 29.78s/it] 35%|███▌      | 210/600 [1:42:53<3:13:55, 29.84s/it] 35%|███▌      | 211/600 [1:43:23<3:13:21, 29.82s/it] 35%|███▌      | 212/600 [1:43:52<3:11:13, 29.57s/it] 36%|███▌      | 213/600 [1:44:21<3:10:40, 29.56s/it] 36%|███▌      | 214/600 [1:44:51<3:10:16, 29.58s/it] 36%|███▌      | 215/600 [1:45:21<3:10:32, 29.70s/it] 36%|███▌      | 216/600 [1:45:50<3:09:02, 29.54s/it] 36%|███▌      | 217/600 [1:46:19<3:08:35, 29.55s/it] 36%|███▋      | 218/600 [1:46:49<3:07:58, 29.52s/it] 36%|███▋      | 219/600 [1:47:19<3:07:59, 29.60s/it] 37%|███▋      | 220/600 [1:47:48<3:06:48, 29.49s/it]                                                      37%|███▋      | 220/600 [1:47:48<3:06:48, 29.49s/it] 37%|███▋      | 221/600 [1:48:15<3:02:29, 28.89s/it] 37%|███▋      | 222/600 [1:48:43<3:00:19, 28.62s/it] 37%|███▋      | 223/600 [1:49:11<2:57:07, 28.19s/it] 37%|███▋      | 224/600 [1:49:39<2:56:38, 28.19s/it] 38%|███▊      | 225/600 [1:49:49<2:21:37, 22.66s/it] 38%|███▊      | 226/600 [1:50:16<2:29:15, 23.94s/it] 38%|███▊      | 227/600 [1:50:44<2:36:30, 25.18s/it] 38%|███▊      | 228/600 [1:51:11<2:40:47, 25.93s/it] 38%|███▊      | 229/600 [1:51:39<2:43:22, 26.42s/it] 38%|███▊      | 230/600 [1:52:07<2:45:12, 26.79s/it] 38%|███▊      | 231/600 [1:52:33<2:44:58, 26.83s/it] 39%|███▊      | 232/600 [1:53:02<2:47:22, 27.29s/it] 39%|███▉      | 233/600 [1:53:30<2:47:47, 27.43s/it] 39%|███▉      | 234/600 [1:53:57<2:47:14, 27.42s/it] 39%|███▉      | 235/600 [1:54:25<2:47:53, 27.60s/it] 39%|███▉      | 236/600 [1:54:53<2:47:46, 27.65s/it] 40%|███▉      | 237/600 [1:55:21<2:48:00, 27.77s/it] 40%|███▉      | 238/600 [1:55:49<2:47:28, 27.76s/it] 40%|███▉      | 239/600 [1:56:17<2:47:59, 27.92s/it] 40%|████      | 240/600 [1:56:45<2:48:45, 28.13s/it]                                                      40%|████      | 240/600 [1:56:45<2:48:45, 28.13s/it] 40%|████      | 241/600 [1:57:13<2:47:08, 27.93s/it] 40%|████      | 242/600 [1:57:41<2:47:19, 28.04s/it] 40%|████      | 243/600 [1:58:10<2:47:41, 28.18s/it] 41%|████      | 244/600 [1:58:38<2:47:06, 28.16s/it] 41%|████      | 245/600 [1:59:06<2:46:42, 28.18s/it] 41%|████      | 246/600 [1:59:34<2:46:28, 28.22s/it] 41%|████      | 247/600 [2:00:03<2:47:10, 28.41s/it] 41%|████▏     | 248/600 [2:00:31<2:45:39, 28.24s/it] 42%|████▏     | 249/600 [2:00:59<2:44:03, 28.04s/it] 42%|████▏     | 250/600 [2:01:26<2:43:11, 27.98s/it] 42%|████▏     | 251/600 [2:01:54<2:42:35, 27.95s/it] 42%|████▏     | 252/600 [2:02:22<2:41:50, 27.90s/it] 42%|████▏     | 253/600 [2:02:50<2:41:52, 27.99s/it] 42%|████▏     | 254/600 [2:03:18<2:41:12, 27.95s/it] 42%|████▎     | 255/600 [2:03:46<2:40:38, 27.94s/it] 43%|████▎     | 256/600 [2:04:14<2:39:16, 27.78s/it] 43%|████▎     | 257/600 [2:04:41<2:38:15, 27.68s/it] 43%|████▎     | 258/600 [2:05:08<2:37:02, 27.55s/it] 43%|████▎     | 259/600 [2:05:36<2:36:41, 27.57s/it] 43%|████▎     | 260/600 [2:06:03<2:35:32, 27.45s/it]                                                      43%|████▎     | 260/600 [2:06:03<2:35:32, 27.45s/it] 44%|████▎     | 261/600 [2:06:30<2:34:58, 27.43s/it] 44%|████▎     | 262/600 [2:06:58<2:34:25, 27.41s/it] 44%|████▍     | 263/600 [2:07:25<2:34:10, 27.45s/it] 44%|████▍     | 264/600 [2:07:53<2:34:02, 27.51s/it] 44%|████▍     | 265/600 [2:08:20<2:33:00, 27.40s/it] 44%|████▍     | 266/600 [2:08:47<2:32:14, 27.35s/it] 44%|████▍     | 267/600 [2:09:15<2:31:31, 27.30s/it] 45%|████▍     | 268/600 [2:09:42<2:30:46, 27.25s/it] 45%|████▍     | 269/600 [2:10:09<2:29:43, 27.14s/it] 45%|████▌     | 270/600 [2:10:36<2:29:41, 27.22s/it] 45%|████▌     | 271/600 [2:11:03<2:29:28, 27.26s/it] 45%|████▌     | 272/600 [2:11:31<2:29:13, 27.30s/it] 46%|████▌     | 273/600 [2:11:58<2:28:09, 27.19s/it] 46%|████▌     | 274/600 [2:12:25<2:27:27, 27.14s/it] 46%|████▌     | 275/600 [2:12:52<2:27:05, 27.16s/it] 46%|████▌     | 276/600 [2:13:19<2:27:05, 27.24s/it] 46%|████▌     | 277/600 [2:13:47<2:27:11, 27.34s/it] 46%|████▋     | 278/600 [2:14:14<2:26:22, 27.27s/it] 46%|████▋     | 279/600 [2:14:41<2:25:00, 27.10s/it] 47%|████▋     | 280/600 [2:15:08<2:24:26, 27.08s/it]                                                      47%|████▋     | 280/600 [2:15:08<2:24:26, 27.08s/it] 47%|████▋     | 281/600 [2:15:35<2:23:43, 27.03s/it] 47%|████▋     | 282/600 [2:16:02<2:23:28, 27.07s/it] 47%|████▋     | 283/600 [2:16:29<2:23:04, 27.08s/it] 47%|████▋     | 284/600 [2:16:56<2:23:08, 27.18s/it] 48%|████▊     | 285/600 [2:17:23<2:21:54, 27.03s/it] 48%|████▊     | 286/600 [2:17:50<2:21:01, 26.95s/it] 48%|████▊     | 287/600 [2:18:17<2:21:00, 27.03s/it] 48%|████▊     | 288/600 [2:18:44<2:20:57, 27.11s/it] 48%|████▊     | 289/600 [2:19:11<2:19:35, 26.93s/it] 48%|████▊     | 290/600 [2:19:38<2:19:55, 27.08s/it] 48%|████▊     | 291/600 [2:20:06<2:20:39, 27.31s/it] 49%|████▊     | 292/600 [2:20:33<2:19:53, 27.25s/it] 49%|████▉     | 293/600 [2:21:00<2:18:52, 27.14s/it] 49%|████▉     | 294/600 [2:21:27<2:18:55, 27.24s/it] 49%|████▉     | 295/600 [2:21:55<2:18:36, 27.27s/it] 49%|████▉     | 296/600 [2:22:21<2:17:01, 27.05s/it] 50%|████▉     | 297/600 [2:22:48<2:15:43, 26.88s/it] 50%|████▉     | 298/600 [2:23:14<2:14:53, 26.80s/it] 50%|████▉     | 299/600 [2:23:41<2:14:37, 26.83s/it] 50%|█████     | 300/600 [2:23:49<1:44:50, 20.97s/it]                                                      50%|█████     | 300/600 [2:23:49<1:44:50, 20.97s/it] 50%|█████     | 301/600 [2:24:16<1:53:24, 22.76s/it] 50%|█████     | 302/600 [2:24:43<1:59:18, 24.02s/it] 50%|█████     | 303/600 [2:25:10<2:03:32, 24.96s/it] 51%|█████     | 304/600 [2:25:36<2:05:31, 25.45s/it] 51%|█████     | 305/600 [2:26:03<2:06:52, 25.81s/it] 51%|█████     | 306/600 [2:26:30<2:07:44, 26.07s/it] 51%|█████     | 307/600 [2:26:57<2:09:11, 26.45s/it] 51%|█████▏    | 308/600 [2:27:24<2:09:12, 26.55s/it] 52%|█████▏    | 309/600 [2:27:51<2:09:32, 26.71s/it] 52%|█████▏    | 310/600 [2:28:18<2:09:28, 26.79s/it] 52%|█████▏    | 311/600 [2:28:45<2:09:34, 26.90s/it] 52%|█████▏    | 312/600 [2:29:11<2:08:03, 26.68s/it] 52%|█████▏    | 313/600 [2:29:38<2:08:31, 26.87s/it] 52%|█████▏    | 314/600 [2:30:06<2:08:24, 26.94s/it] 52%|█████▎    | 315/600 [2:30:32<2:07:32, 26.85s/it] 53%|█████▎    | 316/600 [2:30:59<2:06:29, 26.73s/it] 53%|█████▎    | 317/600 [2:31:25<2:05:55, 26.70s/it] 53%|█████▎    | 318/600 [2:31:51<2:04:33, 26.50s/it] 53%|█████▎    | 319/600 [2:32:18<2:04:03, 26.49s/it] 53%|█████▎    | 320/600 [2:32:45<2:04:09, 26.61s/it]                                                      53%|█████▎    | 320/600 [2:32:45<2:04:09, 26.61s/it] 54%|█████▎    | 321/600 [2:33:12<2:04:11, 26.71s/it] 54%|█████▎    | 322/600 [2:33:39<2:04:18, 26.83s/it] 54%|█████▍    | 323/600 [2:34:05<2:03:42, 26.80s/it] 54%|█████▍    | 324/600 [2:34:32<2:02:41, 26.67s/it] 54%|█████▍    | 325/600 [2:34:58<2:02:05, 26.64s/it] 54%|█████▍    | 326/600 [2:35:24<2:00:43, 26.44s/it] 55%|█████▍    | 327/600 [2:35:51<2:00:05, 26.40s/it] 55%|█████▍    | 328/600 [2:36:17<1:59:03, 26.26s/it] 55%|█████▍    | 329/600 [2:36:43<1:59:10, 26.38s/it] 55%|█████▌    | 330/600 [2:37:10<1:59:03, 26.46s/it] 55%|█████▌    | 331/600 [2:37:36<1:58:05, 26.34s/it] 55%|█████▌    | 332/600 [2:38:02<1:57:52, 26.39s/it] 56%|█████▌    | 333/600 [2:38:29<1:57:59, 26.51s/it] 56%|█████▌    | 334/600 [2:38:56<1:57:45, 26.56s/it] 56%|█████▌    | 335/600 [2:39:23<1:57:52, 26.69s/it] 56%|█████▌    | 336/600 [2:39:49<1:56:59, 26.59s/it] 56%|█████▌    | 337/600 [2:40:16<1:56:15, 26.52s/it] 56%|█████▋    | 338/600 [2:40:42<1:55:34, 26.47s/it] 56%|█████▋    | 339/600 [2:41:09<1:55:41, 26.59s/it] 57%|█████▋    | 340/600 [2:41:35<1:54:22, 26.39s/it]                                                      57%|█████▋    | 340/600 [2:41:35<1:54:22, 26.39s/it] 57%|█████▋    | 341/600 [2:42:02<1:54:31, 26.53s/it] 57%|█████▋    | 342/600 [2:42:28<1:53:34, 26.41s/it] 57%|█████▋    | 343/600 [2:42:54<1:53:04, 26.40s/it] 57%|█████▋    | 344/600 [2:43:21<1:52:36, 26.39s/it] 57%|█████▊    | 345/600 [2:43:47<1:52:31, 26.47s/it] 58%|█████▊    | 346/600 [2:44:14<1:52:25, 26.56s/it] 58%|█████▊    | 347/600 [2:44:41<1:52:04, 26.58s/it] 58%|█████▊    | 348/600 [2:45:08<1:52:11, 26.71s/it] 58%|█████▊    | 349/600 [2:45:34<1:51:10, 26.58s/it] 58%|█████▊    | 350/600 [2:46:00<1:49:54, 26.38s/it] 58%|█████▊    | 351/600 [2:46:26<1:49:47, 26.45s/it] 59%|█████▊    | 352/600 [2:46:53<1:49:00, 26.37s/it] 59%|█████▉    | 353/600 [2:47:19<1:48:39, 26.40s/it] 59%|█████▉    | 354/600 [2:47:46<1:48:21, 26.43s/it] 59%|█████▉    | 355/600 [2:48:12<1:47:36, 26.35s/it] 59%|█████▉    | 356/600 [2:48:39<1:47:58, 26.55s/it] 60%|█████▉    | 357/600 [2:49:05<1:47:36, 26.57s/it] 60%|█████▉    | 358/600 [2:49:31<1:46:35, 26.43s/it] 60%|█████▉    | 359/600 [2:49:58<1:46:06, 26.42s/it] 60%|██████    | 360/600 [2:50:24<1:45:58, 26.50s/it]                                                      60%|██████    | 360/600 [2:50:24<1:45:58, 26.50s/it] 60%|██████    | 361/600 [2:50:51<1:44:58, 26.35s/it] 60%|██████    | 362/600 [2:51:17<1:44:15, 26.29s/it] 60%|██████    | 363/600 [2:51:43<1:43:44, 26.26s/it] 61%|██████    | 364/600 [2:52:09<1:43:23, 26.29s/it] 61%|██████    | 365/600 [2:52:36<1:43:32, 26.44s/it] 61%|██████    | 366/600 [2:53:03<1:43:12, 26.46s/it] 61%|██████    | 367/600 [2:53:29<1:43:16, 26.59s/it] 61%|██████▏   | 368/600 [2:53:56<1:42:36, 26.53s/it] 62%|██████▏   | 369/600 [2:54:22<1:41:57, 26.48s/it] 62%|██████▏   | 370/600 [2:54:49<1:42:08, 26.64s/it] 62%|██████▏   | 371/600 [2:55:16<1:41:32, 26.61s/it] 62%|██████▏   | 372/600 [2:55:42<1:41:12, 26.63s/it] 62%|██████▏   | 373/600 [2:56:09<1:40:55, 26.68s/it] 62%|██████▏   | 374/600 [2:56:35<1:39:28, 26.41s/it] 62%|██████▎   | 375/600 [2:56:42<1:17:12, 20.59s/it] 63%|██████▎   | 376/600 [2:57:06<1:21:08, 21.73s/it] 63%|██████▎   | 377/600 [2:57:31<1:24:29, 22.73s/it] 63%|██████▎   | 378/600 [2:57:56<1:26:32, 23.39s/it] 63%|██████▎   | 379/600 [2:58:21<1:27:06, 23.65s/it] 63%|██████▎   | 380/600 [2:58:45<1:27:59, 24.00s/it]                                                      63%|██████▎   | 380/600 [2:58:45<1:27:59, 24.00s/it] 64%|██████▎   | 381/600 [2:59:10<1:27:45, 24.04s/it] 64%|██████▎   | 382/600 [2:59:34<1:27:42, 24.14s/it] 64%|██████▍   | 383/600 [2:59:59<1:28:02, 24.34s/it] 64%|██████▍   | 384/600 [3:00:23<1:27:42, 24.36s/it] 64%|██████▍   | 385/600 [3:00:48<1:27:18, 24.37s/it] 64%|██████▍   | 386/600 [3:01:12<1:26:58, 24.39s/it] 64%|██████▍   | 387/600 [3:01:37<1:26:51, 24.47s/it] 65%|██████▍   | 388/600 [3:02:01<1:26:31, 24.49s/it] 65%|██████▍   | 389/600 [3:02:25<1:25:45, 24.38s/it] 65%|██████▌   | 390/600 [3:02:50<1:25:33, 24.44s/it] 65%|██████▌   | 391/600 [3:03:14<1:24:57, 24.39s/it] 65%|██████▌   | 392/600 [3:03:39<1:24:37, 24.41s/it] 66%|██████▌   | 393/600 [3:04:03<1:24:06, 24.38s/it] 66%|██████▌   | 394/600 [3:04:27<1:23:48, 24.41s/it] 66%|██████▌   | 395/600 [3:04:52<1:23:36, 24.47s/it] 66%|██████▌   | 396/600 [3:05:16<1:22:57, 24.40s/it] 66%|██████▌   | 397/600 [3:05:41<1:22:48, 24.48s/it] 66%|██████▋   | 398/600 [3:06:06<1:22:35, 24.53s/it] 66%|██████▋   | 399/600 [3:06:29<1:21:32, 24.34s/it] 67%|██████▋   | 400/600 [3:06:54<1:21:14, 24.37s/it]                                                      67%|██████▋   | 400/600 [3:06:54<1:21:14, 24.37s/it] 67%|██████▋   | 401/600 [3:07:19<1:21:44, 24.65s/it] 67%|██████▋   | 402/600 [3:07:44<1:21:22, 24.66s/it] 67%|██████▋   | 403/600 [3:08:09<1:20:56, 24.65s/it] 67%|██████▋   | 404/600 [3:08:33<1:20:10, 24.54s/it] 68%|██████▊   | 405/600 [3:08:57<1:19:43, 24.53s/it] 68%|██████▊   | 406/600 [3:09:21<1:18:57, 24.42s/it] 68%|██████▊   | 407/600 [3:09:46<1:18:10, 24.31s/it] 68%|██████▊   | 408/600 [3:10:09<1:17:13, 24.13s/it] 68%|██████▊   | 409/600 [3:10:33<1:16:31, 24.04s/it] 68%|██████▊   | 410/600 [3:10:57<1:16:20, 24.11s/it] 68%|██████▊   | 411/600 [3:11:22<1:16:04, 24.15s/it] 69%|██████▊   | 412/600 [3:11:46<1:15:45, 24.18s/it] 69%|██████▉   | 413/600 [3:12:10<1:15:38, 24.27s/it] 69%|██████▉   | 414/600 [3:12:34<1:15:02, 24.21s/it] 69%|██████▉   | 415/600 [3:12:59<1:15:12, 24.39s/it] 69%|██████▉   | 416/600 [3:13:23<1:13:57, 24.12s/it] 70%|██████▉   | 417/600 [3:13:46<1:13:16, 24.02s/it] 70%|██████▉   | 418/600 [3:14:11<1:13:03, 24.09s/it] 70%|██████▉   | 419/600 [3:14:35<1:12:30, 24.04s/it] 70%|███████   | 420/600 [3:14:59<1:12:38, 24.22s/it]                                                      70%|███████   | 420/600 [3:14:59<1:12:38, 24.22s/it] 70%|███████   | 421/600 [3:15:23<1:12:13, 24.21s/it] 70%|███████   | 422/600 [3:15:48<1:11:56, 24.25s/it] 70%|███████   | 423/600 [3:16:12<1:11:42, 24.31s/it] 71%|███████   | 424/600 [3:16:36<1:10:48, 24.14s/it] 71%|███████   | 425/600 [3:17:00<1:10:13, 24.08s/it] 71%|███████   | 426/600 [3:17:24<1:09:30, 23.97s/it] 71%|███████   | 427/600 [3:17:48<1:09:15, 24.02s/it] 71%|███████▏  | 428/600 [3:18:12<1:09:02, 24.08s/it] 72%|███████▏  | 429/600 [3:18:36<1:08:26, 24.01s/it] 72%|███████▏  | 430/600 [3:19:01<1:08:37, 24.22s/it] 72%|███████▏  | 431/600 [3:19:24<1:07:51, 24.09s/it] 72%|███████▏  | 432/600 [3:19:49<1:07:33, 24.13s/it] 72%|███████▏  | 433/600 [3:20:13<1:07:01, 24.08s/it] 72%|███████▏  | 434/600 [3:20:37<1:06:34, 24.07s/it] 72%|███████▎  | 435/600 [3:21:01<1:06:16, 24.10s/it] 73%|███████▎  | 436/600 [3:21:24<1:05:26, 23.94s/it] 73%|███████▎  | 437/600 [3:21:48<1:05:02, 23.94s/it] 73%|███████▎  | 438/600 [3:22:12<1:04:42, 23.97s/it] 73%|███████▎  | 439/600 [3:22:37<1:04:30, 24.04s/it] 73%|███████▎  | 440/600 [3:23:01<1:04:23, 24.14s/it]                                                      73%|███████▎  | 440/600 [3:23:01<1:04:23, 24.14s/it] 74%|███████▎  | 441/600 [3:23:25<1:03:37, 24.01s/it] 74%|███████▎  | 442/600 [3:23:49<1:03:20, 24.06s/it] 74%|███████▍  | 443/600 [3:24:13<1:03:03, 24.10s/it] 74%|███████▍  | 444/600 [3:24:37<1:02:39, 24.10s/it] 74%|███████▍  | 445/600 [3:25:01<1:02:01, 24.01s/it] 74%|███████▍  | 446/600 [3:25:25<1:01:23, 23.92s/it] 74%|███████▍  | 447/600 [3:25:49<1:01:03, 23.94s/it] 75%|███████▍  | 448/600 [3:26:13<1:00:53, 24.03s/it] 75%|███████▍  | 449/600 [3:26:37<1:00:29, 24.04s/it] 75%|███████▌  | 450/600 [3:26:44<47:03, 18.82s/it]  /Users/anton/proj/ai.nativemind.net/multimodal_braindler/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:692: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  warnings.warn(warn_msg)
+ 75%|███████▌  | 451/600 [3:27:07<50:10, 20.21s/it] 75%|███████▌  | 452/600 [3:27:31<52:35, 21.32s/it] 76%|███████▌  | 453/600 [3:27:55<54:22, 22.19s/it] 76%|███████▌  | 454/600 [3:28:19<55:14, 22.70s/it] 76%|███████▌  | 455/600 [3:28:43<56:06, 23.22s/it] 76%|███████▌  | 456/600 [3:29:08<56:25, 23.51s/it] 76%|███████▌  | 457/600 [3:29:32<56:23, 23.66s/it] 76%|███████▋  | 458/600 [3:29:55<55:54, 23.62s/it] 76%|███████▋  | 459/600 [3:30:19<55:33, 23.64s/it] 77%|███████▋  | 460/600 [3:30:43<55:15, 23.68s/it]                                                    77%|███████▋  | 460/600 [3:30:43<55:15, 23.68s/it] 77%|███████▋  | 461/600 [3:31:07<55:19, 23.88s/it] 77%|███████▋  | 462/600 [3:31:30<54:39, 23.77s/it] 77%|███████▋  | 463/600 [3:31:54<54:18, 23.79s/it] 77%|███████▋  | 464/600 [3:32:18<54:08, 23.88s/it] 78%|███████▊  | 465/600 [3:32:42<53:33, 23.80s/it] 78%|███████▊  | 466/600 [3:33:06<53:01, 23.74s/it] 78%|███████▊  | 467/600 [3:33:30<52:47, 23.81s/it] 78%|███████▊  | 468/600 [3:33:54<52:30, 23.86s/it] 78%|███████▊  | 469/600 [3:34:17<52:05, 23.86s/it] 78%|███████▊  | 470/600 [3:34:42<51:57, 23.98s/it] 78%|███████▊  | 471/600 [3:35:06<51:33, 23.98s/it] 79%|███████▊  | 472/600 [3:35:30<51:04, 23.94s/it] 79%|███████▉  | 473/600 [3:35:54<50:42, 23.96s/it] 79%|███████▉  | 474/600 [3:36:18<50:27, 24.03s/it] 79%|███████▉  | 475/600 [3:36:41<49:47, 23.90s/it] 79%|███████▉  | 476/600 [3:37:05<49:33, 23.98s/it] 80%|███████▉  | 477/600 [3:37:29<49:07, 23.96s/it] 80%|███████▉  | 478/600 [3:37:53<48:29, 23.85s/it] 80%|███████▉  | 479/600 [3:38:17<48:06, 23.86s/it] 80%|████████  | 480/600 [3:38:41<47:41, 23.85s/it]                                                    80%|████████  | 480/600 [3:38:41<47:41, 23.85s/it] 80%|████████  | 481/600 [3:39:05<47:17, 23.84s/it] 80%|████████  | 482/600 [3:39:29<46:58, 23.89s/it] 80%|████████  | 483/600 [3:39:53<46:44, 23.97s/it] 81%|████████  | 484/600 [3:40:16<46:04, 23.83s/it] 81%|████████  | 485/600 [3:40:40<45:40, 23.83s/it] 81%|████████  | 486/600 [3:41:04<45:22, 23.88s/it] 81%|████████  | 487/600 [3:41:28<45:06, 23.95s/it] 81%|████████▏ | 488/600 [3:41:52<44:41, 23.94s/it] 82%|████████▏ | 489/600 [3:42:15<43:48, 23.68s/it] 82%|████████▏ | 490/600 [3:42:39<43:28, 23.71s/it] 82%|████████▏ | 491/600 [3:43:03<43:04, 23.71s/it] 82%|████████▏ | 492/600 [3:43:26<42:42, 23.72s/it] 82%|████████▏ | 493/600 [3:43:50<42:12, 23.66s/it] 82%|████████▏ | 494/600 [3:44:14<41:56, 23.74s/it] 82%|████████▎ | 495/600 [3:44:38<41:45, 23.87s/it] 83%|████████▎ | 496/600 [3:45:02<41:12, 23.77s/it] 83%|████████▎ | 497/600 [3:45:25<40:52, 23.81s/it] 83%|████████▎ | 498/600 [3:45:50<40:37, 23.90s/it] 83%|████████▎ | 499/600 [3:46:13<40:13, 23.90s/it] 83%|████████▎ | 500/600 [3:46:37<39:36, 23.76s/it]                                                    83%|████████▎ | 500/600 [3:46:37<39:36, 23.76s/it] 84%|████████▎ | 501/600 [3:47:01<39:15, 23.79s/it] 84%|████████▎ | 502/600 [3:47:24<38:44, 23.72s/it] 84%|████████▍ | 503/600 [3:47:48<38:30, 23.82s/it] 84%|████████▍ | 504/600 [3:48:13<38:18, 23.94s/it] 84%|████████▍ | 505/600 [3:48:37<38:01, 24.02s/it] 84%|████████▍ | 506/600 [3:49:01<37:36, 24.00s/it] 84%|████████▍ | 507/600 [3:49:25<37:13, 24.02s/it] 85%|████████▍ | 508/600 [3:49:49<36:48, 24.01s/it] 85%|████████▍ | 509/600 [3:50:13<36:19, 23.95s/it] 85%|████████▌ | 510/600 [3:50:37<36:06, 24.07s/it] 85%|████████▌ | 511/600 [3:51:01<35:41, 24.06s/it] 85%|████████▌ | 512/600 [3:51:25<35:11, 24.00s/it] 86%|████████▌ | 513/600 [3:51:49<34:52, 24.05s/it] 86%|████████▌ | 514/600 [3:52:13<34:16, 23.91s/it] 86%|████████▌ | 515/600 [3:52:36<33:48, 23.86s/it] 86%|████████▌ | 516/600 [3:53:00<33:22, 23.84s/it] 86%|████████▌ | 517/600 [3:53:24<33:01, 23.87s/it] 86%|████████▋ | 518/600 [3:53:48<32:42, 23.93s/it] 86%|████████▋ | 519/600 [3:54:12<32:12, 23.85s/it] 87%|████████▋ | 520/600 [3:54:36<31:49, 23.87s/it]                                                    87%|████████▋ | 520/600 [3:54:36<31:49, 23.87s/it] 87%|████████▋ | 521/600 [3:55:00<31:43, 24.09s/it] 87%|████████▋ | 522/600 [3:55:24<31:02, 23.88s/it] 87%|████████▋ | 523/600 [3:55:48<30:45, 23.97s/it] 87%|████████▋ | 524/600 [3:56:11<30:14, 23.87s/it] 88%|████████▊ | 525/600 [3:56:18<23:20, 18.67s/it] 88%|████████▊ | 526/600 [3:56:42<24:54, 20.20s/it] 88%|████████▊ | 527/600 [3:57:06<26:05, 21.45s/it] 88%|████████▊ | 528/600 [3:57:30<26:37, 22.19s/it] 88%|████████▊ | 529/600 [3:57:54<26:50, 22.68s/it] 88%|████████▊ | 530/600 [3:58:17<26:46, 22.95s/it] 88%|████████▊ | 531/600 [3:58:42<26:52, 23.36s/it] 89%|████████▊ | 532/600 [3:59:06<26:46, 23.62s/it] 89%|████████▉ | 533/600 [3:59:30<26:36, 23.83s/it] 89%|████████▉ | 534/600 [3:59:54<26:15, 23.87s/it] 89%|████████▉ | 535/600 [4:00:18<25:53, 23.90s/it] 89%|████████▉ | 536/600 [4:00:42<25:29, 23.90s/it] 90%|████████▉ | 537/600 [4:01:06<25:10, 23.98s/it] 90%|████████▉ | 538/600 [4:01:30<24:49, 24.02s/it] 90%|████████▉ | 539/600 [4:01:54<24:23, 24.00s/it] 90%|█████████ | 540/600 [4:02:18<23:59, 23.98s/it]                                                    90%|█████████ | 540/600 [4:02:18<23:59, 23.98s/it] 90%|█████████ | 541/600 [4:02:42<23:35, 24.00s/it] 90%|█████████ | 542/600 [4:03:06<23:12, 24.01s/it] 90%|█████████ | 543/600 [4:03:30<22:39, 23.85s/it] 91%|█████████ | 544/600 [4:03:54<22:19, 23.91s/it] 91%|█████████ | 545/600 [4:04:17<21:48, 23.79s/it] 91%|█████████ | 546/600 [4:04:41<21:24, 23.80s/it] 91%|█████████ | 547/600 [4:05:06<21:11, 23.99s/it] 91%|█████████▏| 548/600 [4:05:29<20:37, 23.80s/it] 92%|█████████▏| 549/600 [4:05:53<20:18, 23.89s/it] 92%|█████████▏| 550/600 [4:06:17<19:48, 23.78s/it] 92%|█████████▏| 551/600 [4:06:40<19:21, 23.71s/it] 92%|█████████▏| 552/600 [4:07:04<18:57, 23.69s/it] 92%|█████████▏| 553/600 [4:07:27<18:31, 23.64s/it] 92%|█████████▏| 554/600 [4:07:51<18:04, 23.57s/it] 92%|█████████▎| 555/600 [4:08:15<17:43, 23.63s/it] 93%|█████████▎| 556/600 [4:08:38<17:20, 23.65s/it] 93%|█████████▎| 557/600 [4:09:02<16:55, 23.61s/it] 93%|█████████▎| 558/600 [4:09:25<16:30, 23.58s/it] 93%|█████████▎| 559/600 [4:09:49<16:13, 23.75s/it] 93%|█████████▎| 560/600 [4:10:13<15:49, 23.75s/it]                                                    93%|█████████▎| 560/600 [4:10:13<15:49, 23.75s/it] 94%|█████████▎| 561/600 [4:10:37<15:24, 23.69s/it] 94%|█████████▎| 562/600 [4:11:01<15:03, 23.79s/it] 94%|█████████▍| 563/600 [4:11:24<14:33, 23.62s/it] 94%|█████████▍| 564/600 [4:11:48<14:09, 23.61s/it] 94%|█████████▍| 565/600 [4:12:11<13:42, 23.51s/it] 94%|█████████▍| 566/600 [4:12:34<13:17, 23.46s/it] 94%|█████████▍| 567/600 [4:12:58<12:56, 23.52s/it] 95%|█████████▍| 568/600 [4:13:21<12:32, 23.52s/it] 95%|█████████▍| 569/600 [4:13:45<12:11, 23.61s/it] 95%|█████████▌| 570/600 [4:14:09<11:47, 23.57s/it] 95%|█████████▌| 571/600 [4:14:33<11:26, 23.67s/it] 95%|█████████▌| 572/600 [4:14:57<11:05, 23.76s/it] 96%|█████████▌| 573/600 [4:15:20<10:38, 23.66s/it] 96%|█████████▌| 574/600 [4:15:44<10:17, 23.75s/it] 96%|█████████▌| 575/600 [4:16:08<09:55, 23.83s/it] 96%|█████████▌| 576/600 [4:16:31<09:27, 23.64s/it] 96%|█████████▌| 577/600 [4:16:55<09:04, 23.69s/it] 96%|█████████▋| 578/600 [4:17:19<08:41, 23.69s/it] 96%|█████████▋| 579/600 [4:17:42<08:16, 23.64s/it] 97%|█████████▋| 580/600 [4:18:06<07:54, 23.74s/it]                                                    97%|█████████▋| 580/600 [4:18:06<07:54, 23.74s/it] 97%|█████████▋| 581/600 [4:18:30<07:29, 23.68s/it] 97%|█████████▋| 582/600 [4:18:53<07:06, 23.69s/it] 97%|█████████▋| 583/600 [4:19:17<06:41, 23.64s/it] 97%|█████████▋| 584/600 [4:19:39<06:12, 23.30s/it] 98%|█████████▊| 585/600 [4:19:57<05:22, 21.50s/it] 98%|█████████▊| 586/600 [4:20:13<04:41, 20.08s/it] 98%|█████████▊| 587/600 [4:20:30<04:08, 19.12s/it] 98%|█████████▊| 588/600 [4:20:47<03:41, 18.46s/it] 98%|█████████▊| 589/600 [4:21:04<03:17, 17.97s/it] 98%|█████████▊| 590/600 [4:21:21<02:56, 17.65s/it] 98%|█████████▊| 591/600 [4:21:38<02:37, 17.46s/it] 99%|█████████▊| 592/600 [4:21:55<02:18, 17.28s/it] 99%|█████████▉| 593/600 [4:22:12<02:00, 17.18s/it] 99%|█████████▉| 594/600 [4:22:29<01:42, 17.11s/it] 99%|█████████▉| 595/600 [4:22:46<01:25, 17.05s/it] 99%|█████████▉| 596/600 [4:23:03<01:08, 17.02s/it]100%|█████████▉| 597/600 [4:23:20<00:51, 17.00s/it]100%|█████████▉| 598/600 [4:23:37<00:34, 17.00s/it]100%|█████████▉| 599/600 [4:23:53<00:16, 16.97s/it]100%|██████████| 600/600 [4:23:58<00:00, 13.19s/it]                                                   100%|██████████| 600/600 [4:23:58<00:00, 13.19s/it]                                                   100%|██████████| 600/600 [4:23:59<00:00, 13.19s/it]100%|██████████| 600/600 [4:23:59<00:00, 26.40s/it]
+{'loss': 2.2918, 'grad_norm': 0.5392935276031494, 'learning_rate': 0.00019, 'epoch': 0.27}
+{'loss': 2.0893, 'grad_norm': 0.6874142289161682, 'learning_rate': 0.00039000000000000005, 'epoch': 0.54}
+{'loss': 1.7651, 'grad_norm': 0.6291871666908264, 'learning_rate': 0.0004918181818181818, 'epoch': 0.81}
+{'loss': 1.8381, 'grad_norm': 0.6351644396781921, 'learning_rate': 0.00047363636363636363, 'epoch': 1.07}
+{'loss': 1.649, 'grad_norm': 0.5952558517456055, 'learning_rate': 0.00045545454545454546, 'epoch': 1.34}
+{'loss': 1.7148, 'grad_norm': 0.7521990537643433, 'learning_rate': 0.0004372727272727273, 'epoch': 1.6}
+{'loss': 1.8034, 'grad_norm': 0.7814763188362122, 'learning_rate': 0.00041909090909090905, 'epoch': 1.87}
+{'loss': 1.6945, 'grad_norm': 0.7424490451812744, 'learning_rate': 0.0004009090909090909, 'epoch': 2.13}
+{'loss': 1.6183, 'grad_norm': 0.9750988483428955, 'learning_rate': 0.00038272727272727276, 'epoch': 2.4}
+{'loss': 1.6782, 'grad_norm': 1.1383723020553589, 'learning_rate': 0.0003645454545454546, 'epoch': 2.67}
+{'loss': 1.6401, 'grad_norm': 0.9393206238746643, 'learning_rate': 0.0003463636363636364, 'epoch': 2.94}
+{'loss': 1.5253, 'grad_norm': 1.3149441480636597, 'learning_rate': 0.0003281818181818182, 'epoch': 3.2}
+{'loss': 1.5659, 'grad_norm': 1.6952619552612305, 'learning_rate': 0.00031, 'epoch': 3.47}
+{'loss': 1.4987, 'grad_norm': 1.878749132156372, 'learning_rate': 0.0002918181818181818, 'epoch': 3.74}
+{'loss': 1.6555, 'grad_norm': 2.5804576873779297, 'learning_rate': 0.00027363636363636365, 'epoch': 4.0}
+{'loss': 1.5475, 'grad_norm': 0.7127695083618164, 'learning_rate': 0.0002554545454545454, 'epoch': 4.27}
+{'loss': 1.3473, 'grad_norm': 0.5130417943000793, 'learning_rate': 0.00023727272727272727, 'epoch': 4.54}
+{'loss': 1.4908, 'grad_norm': 1.0650368928909302, 'learning_rate': 0.0002190909090909091, 'epoch': 4.81}
+{'loss': 1.4145, 'grad_norm': 1.2624636888504028, 'learning_rate': 0.0002009090909090909, 'epoch': 5.07}
+{'loss': 1.3247, 'grad_norm': 1.447457194328308, 'learning_rate': 0.00018272727272727275, 'epoch': 5.34}
+{'loss': 1.3731, 'grad_norm': 1.7545591592788696, 'learning_rate': 0.00016454545454545454, 'epoch': 5.6}
+{'loss': 1.439, 'grad_norm': 1.5437614917755127, 'learning_rate': 0.00014636363636363637, 'epoch': 5.87}
+{'loss': 1.3464, 'grad_norm': 5.608867645263672, 'learning_rate': 0.00012818181818181817, 'epoch': 6.13}
+{'loss': 1.2748, 'grad_norm': 1.7951099872589111, 'learning_rate': 0.00011, 'epoch': 6.4}
+{'loss': 1.3421, 'grad_norm': 1.5658197402954102, 'learning_rate': 9.181818181818182e-05, 'epoch': 6.67}
+{'loss': 1.3473, 'grad_norm': 1.6764200925827026, 'learning_rate': 7.363636363636364e-05, 'epoch': 6.94}
+{'loss': 1.2924, 'grad_norm': 1.977186679840088, 'learning_rate': 5.545454545454546e-05, 'epoch': 7.2}
+{'loss': 1.2859, 'grad_norm': 1.9972803592681885, 'learning_rate': 3.727272727272727e-05, 'epoch': 7.47}
+{'loss': 1.2678, 'grad_norm': 1.2829936742782593, 'learning_rate': 1.9090909090909094e-05, 'epoch': 7.74}
+{'loss': 1.2494, 'grad_norm': 1.6067448854446411, 'learning_rate': 9.090909090909091e-07, 'epoch': 8.0}
+{'train_runtime': 15839.2176, 'train_samples_per_second': 0.606, 'train_steps_per_second': 0.038, 'train_loss': 1.5456971549987792, 'epoch': 8.0}
+
+✅ Обучение завершено!
+
+💾 Сохранение модели...
+
+================================================================================
+✅ СФЕРА 049 ОБУЧЕНА!
+================================================================================
+
+📁 ../models/sphere_049_m4_overnight
+🙏 Служение истине продолжается...
