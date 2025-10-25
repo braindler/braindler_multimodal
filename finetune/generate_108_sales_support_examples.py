@@ -5,7 +5,11 @@
 Использует локальную LLM для создания качественных синтетических примеров
 для моделей продаж и поддержки клиентов
 
-Духовное число: 108 примеров × 8 сфер + 1080 Alpaca = 1944 примера
+Духовное число: 108 примеров × 11 сфер + 1080 Alpaca = 2268 примеров
+
+Новые методы:
+- Сфера 027: SALES ENGINEER через libequalizer (балансировка частот)
+- Сфера 028: RETENTION SPECIALIST через quantum_sync (пирамида лояльности)
 
 © 2025 NativeMind - NativeMindNONC License
 """
@@ -570,6 +574,151 @@ def generate_sphere_026_solution_architect(target_count=108):
     print(f"\n   ✅ Сфера 026: {len(examples)} примеров")
     return examples
 
+def generate_sphere_027_sales_engineer(target_count=108):
+    """Генерация 108 примеров SALES ENGINEER через ЭКВАЛАЙЗЕР (Сфера 027)"""
+    print("\n🎚️  Генерация Сферы 027: SALES ENGINEER [ЭКВАЛАЙЗЕР] (108 примеров)")
+    
+    prompts_templates = [
+        "Сбалансируй техническую глубину и скорость продажи",
+        "Настрой эквалайзер: tech_depth vs business_value",
+        "Оптимизируй частоты для complex B2B сделки",
+        "Синхронизируй технический POC с sales timeline",
+        "Найди баланс между customization и time-to-market",
+        "Настрой уровни: demo_complexity, client_expertise, deal_size",
+        "Балансируй risk vs innovation для клиента",
+        "Оптимизируй соотношение features vs simplicity",
+        "Настрой эквалайзер для технического decision maker",
+        "Сбалансируй on-premise требования и cloud benefits"
+    ]
+    
+    equalizer_situations = [
+        "Частоты: tech_depth=8, business_value=4, urgency=9, budget=3",
+        "CTO хочет deep-dive, Sales Manager хочет закрыть за неделю",
+        "Клиент требует кастомизацию, но deal size не окупает",
+        "Эквалайзер показывает дисбаланс: complexity=9, expertise=3",
+        "Нужно синхронизировать: legacy_integration=high, resources=low",
+        "Частоты конфликтуют: security=10, usability=2, timeline=critical",
+        "Баланс нарушен: technical_fit=perfect, price_fit=poor",
+        "Эквалайзер: innovation_risk=8, client_readiness=4",
+        "Требуется настройка: API_complexity vs developer_capacity",
+        "Дисбаланс частот: feature_requests=15, sprint_capacity=5"
+    ]
+    
+    examples = []
+    
+    for i in range(target_count):
+        template = prompts_templates[i % len(prompts_templates)]
+        situation = equalizer_situations[i % len(equalizer_situations)]
+        
+        print(f"\r   Генерация {i+1}/{target_count}...", end='', flush=True)
+        
+        full_prompt = f"""Ты - SALES ENGINEER с ЭКВАЛАЙЗЕРОМ (Сфера 027).
+
+Духовная миссия: Гармоничный баланс между технической глубиной и бизнес-целями.
+
+🎚️ ЭКВАЛАЙЗЕР (libequalizer):
+- Частота 1: Техническая глубина (tech_depth)
+- Частота 2: Бизнес-ценность (business_value)  
+- Частота 3: Скорость закрытия (time_to_close)
+- Частота 4: Сложность решения (complexity)
+- Частота 5: Готовность клиента (client_readiness)
+
+Задача: {template}
+
+Состояние эквалайзера: {situation}
+
+Дай решение с настройкой эквалайзера (3-4 предложения, укажи как изменить частоты):"""
+        
+        response = call_ollama(full_prompt)
+        
+        examples.append({
+            "instruction": f"Ты - SALES ENGINEER [ЭКВАЛАЙЗЕР]. {template}",
+            "input": situation,
+            "output": response,
+            "sphere": "027",
+            "role": "sphere_027_sales_engineer_equalizer",
+            "source": "synthetic_ollama",
+            "method": "libequalizer"
+        })
+    
+    print(f"\n   ✅ Сфера 027: {len(examples)} примеров [ЭКВАЛАЙЗЕР]")
+    return examples
+
+def generate_sphere_028_retention_specialist(target_count=108):
+    """Генерация 108 примеров RETENTION SPECIALIST через ПИРАМИДУ (Сфера 028)"""
+    print("\n🔺 Генерация Сферы 028: RETENTION SPECIALIST [QUANTUM SYNC] (108 примеров)")
+    
+    prompts_templates = [
+        "Синхронизируйся с клиентом на квантовом уровне",
+        "Подними клиента по пирамиде: awareness → advocacy",
+        "Восстанови квантовую связь с уходящим клиентом",
+        "Оптимизируй quantum_sync для повышения retention",
+        "Построй пирамиду лояльности с клиентом",
+        "Усиль квантовую когерентность отношений",
+        "Синхронизируй частоты: client_needs ⟷ product_value",
+        "Поднимись на уровень advocacy в пирамиде",
+        "Восстанови quantum entanglement после churn risk",
+        "Оптимизируй резонанс с клиентским success"
+    ]
+    
+    quantum_situations = [
+        "Пирамида: уровень=awareness, quantum_sync=0.2, churn_risk=0.8",
+        "Клиент на уровне engagement, но связь ослабевает",
+        "Quantum coherence нарушена: NPS=-20, usage падает",
+        "Пирамида loyalty: необходим переход с level_2 на level_3",
+        "Квантовая запутанность разрушается: контракт через 30 дней",
+        "Sync_level=low, client_satisfaction=declining, competitor_active=true",
+        "Пирамида: застрял на level_1, нужен квантовый скачок",
+        "Quantum resonance ослаблена: последний touchpoint 90 дней назад",
+        "Retention_score=3/10, quantum_bond=breaking, win-back required",
+        "Пирамида разрушается: был advocacy, скатился до awareness"
+    ]
+    
+    examples = []
+    
+    for i in range(target_count):
+        template = prompts_templates[i % len(prompts_templates)]
+        situation = quantum_situations[i % len(quantum_situations)]
+        
+        print(f"\r   Генерация {i+1}/{target_count}...", end='', flush=True)
+        
+        full_prompt = f"""Ты - RETENTION SPECIALIST с QUANTUM SYNC (Сфера 028).
+
+Духовная миссия: Неразрывная квантовая связь с клиентом через пирамиду лояльности.
+
+🔺 ПИРАМИДА ЛОЯЛЬНОСТИ (quantum_sync):
+Level 0: 😐 Awareness (знает о продукте)
+Level 1: 👀 Interest (проявляет интерес)  
+Level 2: 🤝 Engagement (активно использует)
+Level 3: ❤️  Loyalty (предан продукту)
+Level 4: 🌟 Advocacy (рекомендует другим)
+
+⚛️  QUANTUM SYNC параметры:
+- Квантовая когерентность (coherence): 0.0-1.0
+- Резонанс с ценностью (resonance): low/medium/high
+- Запутанность (entanglement): слабая/сильная
+
+Задача: {template}
+
+Состояние: {situation}
+
+Дай стратегию с quantum_sync подходом (3-4 предложения, укажи как изменить уровень пирамиды и усилить связь):"""
+        
+        response = call_ollama(full_prompt)
+        
+        examples.append({
+            "instruction": f"Ты - RETENTION SPECIALIST [QUANTUM SYNC]. {template}",
+            "input": situation,
+            "output": response,
+            "sphere": "028",
+            "role": "sphere_028_retention_specialist_quantum",
+            "source": "synthetic_ollama",
+            "method": "quantum_sync_pyramid"
+        })
+    
+    print(f"\n   ✅ Сфера 028: {len(examples)} примеров [QUANTUM SYNC]")
+    return examples
+
 def main():
     """Главная функция генерации"""
     print("="*80)
@@ -618,6 +767,12 @@ def main():
     
     # Сфера 026: SOLUTION ARCHITECT (108)
     all_examples.extend(generate_sphere_026_solution_architect(108))
+    
+    # Сфера 027: SALES ENGINEER [ЭКВАЛАЙЗЕР] (108)
+    all_examples.extend(generate_sphere_027_sales_engineer(108))
+    
+    # Сфера 028: RETENTION SPECIALIST [QUANTUM SYNC] (108)
+    all_examples.extend(generate_sphere_028_retention_specialist(108))
     
     # Загружаем Alpaca (1080 примеров)
     print("\n🦙 Загрузка Alpaca (1080 примеров)...")
@@ -670,6 +825,8 @@ def main():
             "024_technical_support": len([e for e in all_examples if e['sphere'] == '024']),
             "025_customer_success": len([e for e in all_examples if e['sphere'] == '025']),
             "026_solution_architect": len([e for e in all_examples if e['sphere'] == '026']),
+            "027_sales_engineer_equalizer": len([e for e in all_examples if e['sphere'] == '027']),
+            "028_retention_specialist_quantum": len([e for e in all_examples if e['sphere'] == '028']),
             "general_alpaca": len([e for e in all_examples if e['sphere'] == 'general'])
         }
     }
@@ -691,6 +848,8 @@ def main():
     print(f"📦 Всего примеров: {stats['total']}")
     print()
     print("🙏 108 - священное число в каждой сфере продаж и поддержки!")
+    print("🎚️  Сфера 027: ЭКВАЛАЙЗЕР (libequalizer)")
+    print("🔺 Сфера 028: QUANTUM SYNC (пирамида лояльности)")
     print("💼 Готово для обучения моделей Sales & Support!")
 
 if __name__ == "__main__":
